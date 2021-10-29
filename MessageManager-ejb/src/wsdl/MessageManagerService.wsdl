@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions targetNamespace="http://burov.iflex.ru/messsage/ws" name="MessageManagerService"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:tns="http://burov.iflex.ru/messsage/ws"
+             xmlns:m="http://burov.iflex.ru/messsage"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns="http://schemas.xmlsoap.org/wsdl/">
+    <types>
+        <xsd:schema>
+            <xsd:import namespace="http://burov.iflex.ru/messsage" schemaLocation="MessageManagerService.xsd"/>
+        </xsd:schema>
+    </types>
+
+    <message name="GetMessageByDateRequest">
+        <part name="request" element="m:GetMessageByDateRequest"/>
+    </message>
+    <message name="GetMessageByDateResponse">
+        <part name="response" element="m:GetMessageByDateResponse"/>
+    </message>
+
+    <message name="GetMessageBySenderRequest">
+        <part name="request" element="m:GetMessageBySenderRequest"/>
+    </message>
+    <message name="GetMessageBySenderResponse">
+        <part name="response" element="m:GetMessageBySenderResponse"/>
+    </message>
+
+    <portType name="MessageManagerPortType">
+        <operation name="GetMessageByDate">
+            <input message="tns:GetMessageByDateRequest"/>
+            <output message="tns:GetMessageByDateResponse"/>
+        </operation>
+
+        <operation name="GetMessageBySender">
+            <input message="tns:GetMessageBySenderRequest"/>
+            <output message="tns:GetMessageBySenderResponse"/>
+        </operation>
+    </portType>
+
+    <binding name="MessageManagerServicePortBinding" type="tns:MessageManagerPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <operation name="GetMessageByDate">
+            <soap:operation soapAction=""/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="GetMessageBySender">
+            <soap:operation soapAction=""/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+
+    <service name="MessageManagerService">
+        <port name="MessageManagerService" binding="tns:MessageManagerServicePortBinding">
+            <soap:address location="http://localhost:8080/MessageManagerService"/>
+        </port>
+    </service>
+
+</definitions>

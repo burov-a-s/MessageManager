@@ -1,0 +1,4 @@
+# Project exclude paths
+/MessageManager-ejb/target/
+/MessageManager-lib/target/
+/MessageManager-war/target/

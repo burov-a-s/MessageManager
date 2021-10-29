@@ -1,0 +1,3 @@
+<fac:MessageManagerConfiguration xmlns:fac="http://burov.iflex.ru/facadeConfig">
+  <fac:dataSourceName>MM_DS</fac:dataSourceName>
+</fac:MessageManagerConfiguration>
