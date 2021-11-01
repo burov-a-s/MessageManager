@@ -14,9 +14,9 @@ import java.util.List;
 public class MessageDAOImpl implements MessageDAO {
 
     public void addMessage(Message message) {
-        try (Connection connection = DBConnection.getConnection()) {
-            String strSQL = "INSERT INTO message (sender, send_time, content) VALUES (?, ?, ?)";
-            PreparedStatement preparedStatement = connection.prepareStatement(strSQL);
+        String strSQL = "INSERT INTO message (sender, send_time, content) VALUES (?, ?, ?)";
+        try (Connection connection = DBConnection.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(strSQL)) {
             preparedStatement.setString(1, message.getSender());
             Timestamp timestamp = new Timestamp(message.getSend_time().getTimeInMillis());
             preparedStatement.setTimestamp(2, timestamp);
@@ -28,9 +28,9 @@ public class MessageDAOImpl implements MessageDAO {
     }
 
     public void removeMessage(int id) {
-        try (Connection connection = DBConnection.getConnection()) {
-            String strSQL = "DELETE FROM message WHERE id = ?";
-            PreparedStatement preparedStatement = connection.prepareStatement(strSQL);
+        String strSQL = "DELETE FROM message WHERE id = ?";
+        try (Connection connection = DBConnection.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(strSQL);) {
             preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -41,9 +41,9 @@ public class MessageDAOImpl implements MessageDAO {
     public List<Message> getMessagesByDate(Calendar calendar) {
         List<Message> messages = null;
         Timestamp timestamp = new Timestamp(calendar.getTimeInMillis());
-        try (Connection connection = DBConnection.getConnection()) {
-            String strSQL = "SELECT * FROM message WHERE DATE(send_time) = ?";
-            PreparedStatement preparedStatement = connection.prepareStatement(strSQL);
+        String strSQL = "SELECT * FROM message WHERE DATE(send_time) = ?";
+        try (Connection connection = DBConnection.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(strSQL)) {
             preparedStatement.setTimestamp(1, timestamp);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet != null) {
@@ -65,9 +65,9 @@ public class MessageDAOImpl implements MessageDAO {
 
     public List<Message> getMessagesBySender(String sender) {
         List<Message> messages = null;
-        try (Connection connection = DBConnection.getConnection()) {
-            String strSQL = "SELECT * FROM message WHERE sender = ?";
-            PreparedStatement preparedStatement = connection.prepareStatement(strSQL);
+        String strSQL = "SELECT * FROM message WHERE sender = ?";
+        try (Connection connection = DBConnection.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(strSQL)) {
             preparedStatement.setString(1, sender);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet != null) {
@@ -92,9 +92,9 @@ public class MessageDAOImpl implements MessageDAO {
 
     public List<Message> getAllMessages() {
         List<Message> messages = null;
-        try (Connection connection = DBConnection.getConnection();) {
-            String strSQL = "SELECT * FROM message";
-            PreparedStatement preparedStatement = connection.prepareStatement(strSQL);
+        String strSQL = "SELECT * FROM message";
+        try (Connection connection = DBConnection.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(strSQL)) {
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet != null) {
                 messages = new ArrayList();

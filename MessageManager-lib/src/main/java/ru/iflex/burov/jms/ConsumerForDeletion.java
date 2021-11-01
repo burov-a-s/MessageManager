@@ -2,7 +2,6 @@ package ru.iflex.burov.jms;
 
 import ru.iflex.burov.lib.MessageDAO;
 
-import javax.ejb.ActivationConfigProperty;
 import javax.ejb.EJB;
 import javax.ejb.MessageDriven;
 import javax.jms.JMSException;

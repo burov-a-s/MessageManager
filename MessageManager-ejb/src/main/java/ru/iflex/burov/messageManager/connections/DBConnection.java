@@ -26,7 +26,7 @@ public class DBConnection {
             System.out.println("------------------------------------------------------------------");
             System.out.println();
             System.out.println();
-            dataSource = (DataSource)context.lookup(dataSourceName);
+            dataSource = (DataSource) context.lookup(dataSourceName);
             try {
                 connection = dataSource.getConnection();
             } catch (SQLException e) {
@@ -57,7 +57,7 @@ public class DBConnection {
         if (connection == null) {
             try {
                 InitialContext context = new InitialContext();
-                DataSource dataSource = (DataSource)context.lookup("MM_DS");
+                DataSource dataSource = (DataSource) context.lookup("MM_DS");
                 try {
                     connection = dataSource.getConnection();
                 } catch (SQLException e) {

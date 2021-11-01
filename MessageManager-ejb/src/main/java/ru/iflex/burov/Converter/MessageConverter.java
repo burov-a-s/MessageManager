@@ -19,7 +19,7 @@ public class MessageConverter {
                 try {
                     Calendar calendarIn = messageIn.getSend_time();
                     XMLGregorianCalendar xmlGregorianCalendar = DatatypeFactory.newInstance().newXMLGregorianCalendar(calendarIn.get(Calendar.YEAR),
-                            calendarIn.get(Calendar.MONTH),
+                            calendarIn.get(Calendar.MONTH) + 1,
                             calendarIn.get(Calendar.DAY_OF_MONTH),
                             calendarIn.get(Calendar.HOUR),
                             calendarIn.get(Calendar.MINUTE),

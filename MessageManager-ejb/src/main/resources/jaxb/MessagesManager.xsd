@@ -8,12 +8,7 @@
     <xs:element name="MessageManagerConfiguration">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="dataSourceName">
-                    <xs:simpleType>
-                        <xs:restriction base="xs:string">
-                        </xs:restriction>
-                    </xs:simpleType>
-                </xs:element>
+                <xs:element name="dataSourceName" type="xs:string"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>

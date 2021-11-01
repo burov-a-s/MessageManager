@@ -29,7 +29,7 @@ public class Sender {
     }
 
     public void sendForPosting(Message message) {
-        try (Connection connection = connectionFactory.createConnection()){
+        try (Connection connection = connectionFactory.createConnection()) {
             Session session = connection.createSession();
             MessageProducer producer = session.createProducer(queueForPosting);
             ObjectMessage objectMessage = session.createObjectMessage(message);
