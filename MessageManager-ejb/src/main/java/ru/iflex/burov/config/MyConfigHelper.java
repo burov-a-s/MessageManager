@@ -32,13 +32,6 @@ public class MyConfigHelper {
     }
 
     public MessageManagerConfiguration getConfigurations() {
-        System.out.println();
-        System.out.println();
-        System.out.println("--------------------------------------------------");
-        System.out.println("fileName: " + fileName);
-        System.out.println("--------------------------------------------------");
-        System.out.println();
-        System.out.println();
         if (messageManagerConfiguration == null) {
             synchronized (MyConfigHelper.class) {
                 if (messageManagerConfiguration == null) {

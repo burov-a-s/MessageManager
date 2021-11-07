@@ -19,13 +19,6 @@ public class DBConnection {
         dataSourceName = MyConfigHelper.getInstance().getConfigurations().getDataSourceName();
         try {
             InitialContext context = new InitialContext();
-            System.out.println();
-            System.out.println();
-            System.out.println("------------------------------------------------------------------");
-            System.out.println("dataSource: " + dataSourceName);
-            System.out.println("------------------------------------------------------------------");
-            System.out.println();
-            System.out.println();
             dataSource = (DataSource) context.lookup(dataSourceName);
             try {
                 connection = dataSource.getConnection();
