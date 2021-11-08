@@ -1,5 +1,10 @@
 package ru.iflex.burov.messageManager.web.rpc;
 
+import ru.iflex.burov.interceptors.LoggerInterceptor;
+
+import javax.interceptor.Interceptors;
+
+@Interceptors(LoggerInterceptor.class)
 public class RPCRequest {
     private String jsonrpc = "2.0";
     private String method;
@@ -35,5 +40,15 @@ public class RPCRequest {
 
     public void setParams(String params) {
         this.params = params;
+    }
+
+    @Override
+    public String toString() {
+        return "RPCRequest{" +
+                "jsonrpc='" + jsonrpc + '\'' +
+                ", method='" + method + '\'' +
+                ", params='" + params + '\'' +
+                ", id='" + id + '\'' +
+                '}';
     }
 }

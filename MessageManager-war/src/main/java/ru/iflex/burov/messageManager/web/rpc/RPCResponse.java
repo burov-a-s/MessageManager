@@ -1,9 +1,12 @@
 package ru.iflex.burov.messageManager.web.rpc;
 
 import ru.iflex.burov.entity.Message;
+import ru.iflex.burov.interceptors.LoggerInterceptor;
 
+import javax.interceptor.Interceptors;
 import java.util.List;
 
+@Interceptors(LoggerInterceptor.class)
 public class RPCResponse {
     private String jsonrpc = "2.0";
     private List<Message> result;
@@ -34,5 +37,14 @@ public class RPCResponse {
 
     public void setJsonrpc(String jsonrpc) {
         this.jsonrpc = jsonrpc;
+    }
+
+    @Override
+    public String toString() {
+        return "RPCResponse{" +
+                "jsonrpc='" + jsonrpc + '\'' +
+                ", result=" + result +
+                ", id='" + id + '\'' +
+                '}';
     }
 }

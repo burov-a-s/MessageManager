@@ -1,12 +1,15 @@
 package ru.iflex.burov.jms;
 
 import ru.iflex.burov.entity.Message;
+import ru.iflex.burov.interceptors.LoggerInterceptor;
 
 import javax.annotation.Resource;
 import javax.ejb.Stateless;
+import javax.interceptor.Interceptors;
 import javax.jms.*;
 
 @Stateless
+@Interceptors(LoggerInterceptor.class)
 public class Sender {
     @Resource(lookup = "ru/iflex/burov/MyConnectionFactory")
     private ConnectionFactory connectionFactory;

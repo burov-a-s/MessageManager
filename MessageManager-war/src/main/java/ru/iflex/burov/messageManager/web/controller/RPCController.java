@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ru.iflex.burov.entity.Message;
+import ru.iflex.burov.interceptors.LoggerInterceptor;
 import ru.iflex.burov.lib.MessageBean;
 import ru.iflex.burov.messageManager.web.rpc.RPCErrorResponse;
 import ru.iflex.burov.messageManager.web.rpc.RPCRequest;
@@ -12,6 +13,7 @@ import ru.iflex.burov.messageManager.web.rpc.errors.RPCError;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.interceptor.Interceptors;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -25,6 +27,7 @@ import java.util.List;
 
 @Path("/RPCController")
 @Stateless
+@Interceptors(LoggerInterceptor.class)
 public class RPCController {
 
     @EJB

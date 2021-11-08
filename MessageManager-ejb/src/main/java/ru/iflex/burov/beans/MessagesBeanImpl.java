@@ -1,16 +1,19 @@
 package ru.iflex.burov.beans;
 
 import ru.iflex.burov.entity.Message;
+import ru.iflex.burov.interceptors.LoggerInterceptor;
 import ru.iflex.burov.jms.Sender;
 import ru.iflex.burov.lib.MessageBean;
 import ru.iflex.burov.lib.MessageDAO;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.interceptor.Interceptors;
 import java.util.Calendar;
 import java.util.List;
 
 @Stateless
+@Interceptors(LoggerInterceptor.class)
 public class MessagesBeanImpl implements MessageBean {
     @EJB
     private MessageDAO messageDAO;

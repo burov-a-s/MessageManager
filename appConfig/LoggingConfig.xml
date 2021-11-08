@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Appenders>
+        <RollingFile name="log" fileName="applogs/LoggingCore/app.log" append="true"
+                     filePattern="applogs/LoggingCore/app.log_%d{yyyy-MM-dd'T'HH:mm:ss}">
+            <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout>
+                <Pattern>[%d{ISO8601}][%1p][%X{pid}][%c{1}][%m]%n</Pattern>
+            </PatternLayout>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="30 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="20"/>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Logger name="org.apache.log4j.xml" level="info">
+            <AppenderRef ref="log"/>
+        </Logger>
+        <Root level="info">
+            <AppenderRef ref="log"/>
+        </Root>
+    </Loggers>
+</Configuration>

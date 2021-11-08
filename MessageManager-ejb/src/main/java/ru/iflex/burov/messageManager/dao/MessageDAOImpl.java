@@ -1,16 +1,19 @@
 package ru.iflex.burov.messageManager.dao;
 
 import ru.iflex.burov.entity.Message;
+import ru.iflex.burov.interceptors.LoggerInterceptor;
 import ru.iflex.burov.lib.MessageDAO;
 import ru.iflex.burov.messageManager.connections.DBConnection;
 
 import javax.ejb.Stateless;
+import javax.interceptor.Interceptors;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
 @Stateless
+@Interceptors(LoggerInterceptor.class)
 public class MessageDAOImpl implements MessageDAO {
 
     public void addMessage(Message message) {

@@ -1,6 +1,6 @@
 package ru.iflex.burov.messageManager.connections;
 
-import ru.iflex.burov.config.MyConfigHelper;
+import ru.iflex.burov.config.MessageManagerConfigHelper;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -8,6 +8,7 @@ import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+//@Interceptors(LoggerInterceptor.class)
 public class DBConnection {
     private static DBConnection instance = new DBConnection();
     private static DataSource dataSource;
@@ -16,7 +17,7 @@ public class DBConnection {
     private static String dataSourceName;
 
     private DBConnection() {
-        dataSourceName = MyConfigHelper.getInstance().getConfigurations().getDataSourceName();
+        dataSourceName = MessageManagerConfigHelper.getInstance().getConfigurations().getDataSourceName();
         try {
             InitialContext context = new InitialContext();
             dataSource = (DataSource) context.lookup(dataSourceName);

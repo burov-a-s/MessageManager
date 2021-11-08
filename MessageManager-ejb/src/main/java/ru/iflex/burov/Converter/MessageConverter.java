@@ -1,12 +1,16 @@
 package ru.iflex.burov.Converter;
 
+import ru.iflex.burov.interceptors.LoggerInterceptor;
+
 import javax.ejb.Stateless;
+import javax.interceptor.Interceptors;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 import java.util.*;
 
 @Stateless
+@Interceptors(LoggerInterceptor.class)
 public class MessageConverter {
 
     public List<ru.iflex.burov.messsage.Message> convert(List<ru.iflex.burov.entity.Message> messagesIn) {

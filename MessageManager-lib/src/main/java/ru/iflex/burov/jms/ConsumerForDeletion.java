@@ -4,12 +4,15 @@ import ru.iflex.burov.lib.MessageDAO;
 
 import javax.ejb.EJB;
 import javax.ejb.MessageDriven;
+import javax.interceptor.Interceptors;
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageListener;
 import javax.jms.TextMessage;
+import ru.iflex.burov.interceptors.LoggerInterceptor;
 
 @MessageDriven(mappedName = "ru/iflex/burov/MyDeletionQueue")
+@Interceptors(LoggerInterceptor.class)
 public class ConsumerForDeletion implements MessageListener {
     @EJB
     private MessageDAO messageDAO;

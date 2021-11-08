@@ -4,10 +4,12 @@ import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ru.iflex.burov.entity.Message;
+import ru.iflex.burov.interceptors.LoggerInterceptor;
 import ru.iflex.burov.lib.MessageBean;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.interceptor.Interceptors;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -23,6 +25,7 @@ import java.util.List;
 
 @Path("/RestController")
 @Stateless
+@Interceptors(LoggerInterceptor.class)
 public class RestController {
 
     @EJB
