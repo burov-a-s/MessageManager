@@ -15,7 +15,9 @@ public class LoggerInterceptor {
         LOGGER.info("Начало работы метода - {} в классе - {}\n", context.getMethod().getName(), context.getTarget().getClass().getSimpleName());
         LOGGER.info("Метод вызывается с параметрами: {}\n", Arrays.asList(context.getParameters()));
         Object result = context.proceed();
-        LOGGER.info("Результат работы метода: {}\n", result.toString());
+        if (result != null) {
+            LOGGER.info("Результат работы метода: {}\n", result);
+        }
         LOGGER.info("Конец работы метода - {} в классе - {}\n", context.getMethod().getName(), context.getTarget().getClass().getSimpleName());
         return result;
     }
